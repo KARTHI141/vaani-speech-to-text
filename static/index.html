@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f6f7f9">
+    <title>Vaani — Speech to text</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/styles.css">
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <a class="brand" href="/" aria-label="Vaani home">
+          <span class="brand-mark"><span></span><span></span><span></span><span></span></span>
+          <span>vaani<span class="brand-period">.</span></span>
+        </a>
+        <div class="side-label">WORKSPACE</div>
+        <nav>
+          <a class="nav-link active" href="#studio"><span class="nav-icon">◉</span> Transcribe</a>
+          <a class="nav-link" href="#history"><span class="nav-icon">◷</span> History <span class="nav-count" id="nav-count">0</span></a>
+        </nav>
+        <div class="sidebar-bottom">
+          <div class="user-avatar">P</div>
+          <div class="user-details"><strong>Personal workspace</strong><span>Free plan</span></div>
+          <span class="more-icon">···</span>
+        </div>
+      </aside>
+
+      <main class="main">
+        <header class="topbar">
+          <div class="breadcrumbs">Workspace <span>/</span> <strong>Transcribe</strong></div>
+          <a class="github-link" href="https://github.com/" target="_blank" rel="noreferrer"><span>↗</span> GitHub</a>
+        </header>
+
+        <div class="content">
+          <section class="intro" id="studio">
+            <div class="eyebrow"><span class="eyebrow-dot"></span> SPEECH STUDIO</div>
+            <h1>Your words,<br><span>in writing.</span></h1>
+            <p class="intro-copy">Speak naturally in English, हिन्दी, or both. Your words appear as you speak.</p>
+          </section>
+
+          <section class="recorder-card" aria-label="Live transcription">
+            <div class="recorder-top">
+              <div class="live-label"><span class="live-dot" id="live-dot"></span><span id="record-state">READY WHEN YOU ARE</span></div>
+              <label class="language-select">
+                <span>LANGUAGE</span>
+                <select id="language-select" aria-label="Recognition language">
+                  <option value="en-IN">English · India</option>
+                  <option value="hi-IN">हिन्दी · India</option>
+                  <option value="en-US">English · US</option>
+                </select>
+              </label>
+            </div>
+            <div class="transcript-area" id="transcript" aria-live="polite">
+              <span class="placeholder">Your transcription will appear here...</span>
+            </div>
+            <div class="waveform" id="waveform" aria-hidden="true">
+              <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+            </div>
+            <div class="recorder-bottom">
+              <div class="record-hint"><span class="mic-small">♩</span><span id="hint-text">Click to start speaking</span></div>
+              <button class="record-button" id="record-button" type="button"><span class="record-button-icon"></span><span id="record-button-label">Start speaking</span></button>
+            </div>
+            <div class="browser-note" id="browser-note" hidden>Your browser does not support live recognition. Try Chrome, or upload a recording below for Whisper transcription.</div>
+          </section>
+
+          <section class="upload-row">
+            <div class="upload-icon">↑</div>
+            <div class="upload-copy"><strong>Have a recording?</strong><span>Transcribe audio with self-hosted Whisper AI</span></div>
+            <label class="upload-button" for="audio-file">Upload audio <span>↗</span></label>
+            <input id="audio-file" type="file" accept="audio/*,.wav,.mp3,.webm,.ogg,.m4a" hidden>
+          </section>
+
+          <section class="history-section" id="history">
+            <div class="history-heading">
+              <div><h2>Recent transcriptions</h2><p>Your saved notes, all in one place.</p></div>
+              <button class="text-button" id="refresh-button" type="button" aria-label="Refresh history">↻</button>
+            </div>
+            <div class="history-list" id="history-list"></div>
+            <div class="empty-state" id="empty-state">
+              <div class="empty-icon">◷</div>
+              <strong>Nothing here just yet</strong>
+              <span>Your transcriptions will show up here.</span>
+            </div>
+          </section>
+          <footer>Made for conversations that matter <span>✳</span></footer>
+        </div>
+      </main>
+    </div>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="/static/app.js" defer></script>
+  </body>
+</html>
