@@ -46,6 +46,10 @@ docker run --rm -p 8000:8000 -v vaani-data:/data vaani
 
 For a cloud deployment, deploy the Docker image to a container platform and mount persistent storage at `/data` so the SQLite database survives restarts. For CPU/memory-constrained hosts, set `WHISPER_MODEL=base` or omit the optional Whisper dependency and use browser recognition.
 
+## Deploy with Render
+
+The included `render.yaml` defines a free Python web service. In Render, create a new Blueprint from this repository and deploy it. The free instance serves browser-based live transcription and SQLite history, but its local filesystem is ephemeral, so saved history is lost when the service restarts or redeploys. The free blueprint omits the optional Faster-Whisper dependency; add it to the build command only if the service has sufficient memory and CPU. For persistent production history, use a paid persistent disk or move the database to a managed relational database.
+
 ## Notes
 
 Live recognition is performed by the browser and depends on its speech-recognition implementation; the app does not send microphone audio to its own server during live capture. Uploaded recordings are processed by the self-hosted Whisper model and are not retained after transcription. This demo does not include authentication; add access controls before exposing private transcripts publicly.
